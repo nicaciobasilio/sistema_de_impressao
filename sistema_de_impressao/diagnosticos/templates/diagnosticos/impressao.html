@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de impressão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Roboto, 'sans-serif';
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .cabecalho {
+            padding: 24px;
+        }
+
+        .cabecalho__titulo {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .responsavel {
+            padding: 8px;
+            margin: 16px 24px;
+            border: 1px solid #808080;
+            border-radius: 16px;
+        }
+        .responsavel__campos {
+            display: flex;
+            margin: 8px 16px;
+            justify-content: space-between;
+        }
+        .responsavel__titulo {
+            margin: 8px 16px;
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="cabecalho__titulo">Confira a impressão:</h1>
+    </header>
+    <div class="container">
+        <section class="responsavel">
+            <h3 class="responsavel__titulo">1. RESPONSÁVEL TÉCNICO</h3>
+            <div class="responsavel__campos">
+                <p class="responsavel__item">Nome: {{ responsavel.nome }}</p>
+                <p class="responsavel__item">CNPJ: {{ responsavel.cnpj }}</p>
+                <p class="responsavel__item">Número de Registro: {{ responsavel.numero_registro }}</p>
+            </div>
+        </section>
+        <section class="produtor">
+            <h3 class="produtor__titulo">2. PRODUTO RURAL</h3>
+            <p class="produtor__item">Nome: {{ produtor.nome }}</p>
+            <p class="produtor__item">Descrição: {{ propriedade.descricao }}</p>
+            <p class="produtor__item">Propriedade: {{ produtor.propriedade }}</p>
+            <p class="produtor__item">CNPJ: {{ propriedade.cnpj }}</p>
+            <p class="produtor__item">Local de Aplicação: {{ propriedade.local }}</p>
+            <p class="produtor__item">Latitude: {{ propriedade.latitude }}</p>
+            <p class="produtor__item">Longitude: {{ propriedade.longitude }}</p>
+        </section>
+        <section class="diagnostico">
+            <h3 class="diagnostico__titulo">3. DIAGNÓSTICO E RECOMENDAÇÕES TÉCNICAS</h3>
+            <p class="diagnostico__item">Cultura: {{ diagnostico.cultura }}</p>
+            <p class="diagnostico__item">Alvo: {{ diagnostico.alvo }}</p>
+            <p class="diagnostico__item">Produto Comercial: {{ diagnostico.produto_comercial }}</p>
+            <p class="diagnostico__item">Classe toxicológica: Categoria 4: Produto Pouco Tóxico</p>
+            <p class="diagnostico__item">Área a Tratar: {{ diagnostico.area_a_tratar }}</p>
+            <p class="diagnostico__item">Dosagem: 1 L/ha</p>
+            <p class="diagnostico__item">Quantidade a Adquirir: {{ diagnostico.quantidade_a_adquirir }}</p>
+            <p class="diagnostico__item">N° de Aplicações: {{ diagnostico.n_aplicacoes }}</p>
+            <p class="diagnostico__item">Volume da Calda: {{ diagnostico.volume_da_calda }}</p>
+            <p class="diagnostico__item">Intervalo de Segurança: {{ diagnostico.intervalo_de_seguranca }}</p>
+            <p class="diagnostico__item">Modalidade de Aplicação: {{ diagnostico.modalidade_aplicacao }}</p>
+            <p class="diagnostico__item">Equipamento de Aplicação: {{ diagnostico.equipamento_aplicacao }}</p>
+            <p class="diagnostico__item">Época de Aplicação: {{ diagnostico.epoca_aplicacao }}</p>
+            <h2 class="diagnostico__titulo--observacoes">OBSERVAÇÕES</h2> <br>
+            <p class="diagnostico__item--subtitulo">TERMO DE CONHECIMENTO DE RISCO E DE RESPONSABILIDADE</p> <br>
+            <p class="diagnostico__item">
+                O produtor acima idenficado está ciente que os produtos agrotóxicos hormonais, inclusive os produtos com ingrediente avo a base de ácido 2,4-diclorofenoxiacéco (2,4-D), em caso de deriva, causam grandes prejuízos para as culturas sensíveis. O produtor fica ciente que somente poderá aplicar os produtos agrotóxicos hormonais respeitando as seguintes condições meteorológicas:
+            </p> <br>
+            <p class="diagnostico__item">- Velocidade do Vento menor que 10 Km/h;</p>
+            <p class="diagnostico__item">- Umidade Relava do Ar superior a 55%;</p>
+            <p class="diagnostico__item">- Temperatura ambiente menor que 30ºC.</p>
+            <p class="diagnostico__item">No caso de recomendações específicas previstas na bula do produto, estas deverão ser obrigatoriamente seguidas. Em caso de omissão, deverão ser adotados os parâmetros gerais acima elencados. </p>
+            <p class="diagnostico__item">O produtor fica ciente de que o equipamento ulizado para aplicação de agrotóxicos hormonais deverá estar em condições técnicas adequadas, inclusive com bicos compaveis, conforme a recomendação do fabricante do produto agrotóxico. </p>
+        </section>
+    </div>
+</body>
+</html>

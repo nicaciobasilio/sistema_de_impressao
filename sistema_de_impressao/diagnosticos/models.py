@@ -8,7 +8,7 @@ class ResponsavelTecnico(models.Model):
     class Meta: 
         verbose_name="Responsável técnico"
         verbose_name_plural="Responsáveis técnicos"
-        db_table = "responsal_tecnico"
+        db_table = "responsavel_tecnico"
 
 class ProdutorRural(models.Model):
     nome = models.CharField(max_length=50)
