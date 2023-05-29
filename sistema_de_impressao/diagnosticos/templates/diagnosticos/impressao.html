@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +21,12 @@
             max-width: 960px;
             width: 100%;
             margin: 0 auto;
+            border: 1px solid #808080;
+            padding-top: 24px;
         }
 
-        .cabecalho {
+        .cabecalho,
+        .rodape {
             padding: 24px;
         }
 
@@ -31,71 +35,338 @@
             text-align: center;
         }
 
-        .responsavel {
+        .rodape {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rodape__botao {
+            padding: 16px 36px;
+            background-color: #228B22;
+            color: #fff;
+            border: 1px solid #228B22;
+            border-radius: 16px;
+            font-size: 18px;
+        }
+
+        .rodape__botao:hover {
+            padding: 16px 36px;
+            background-color: #005700;
+            color: #fff;
+            border: 1px solid #005700;
+            border-radius: 16px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .receita {
             padding: 8px;
-            margin: 16px 24px;
+            margin: 16px 36px;
+            border: 1px solid #D5E6DC;
+            background-color: #D5E6DC;
+            border-radius: 16px;
+        }
+
+        .receita__espaco {
+            display: flex;
+            padding: 8px 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .span {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .receita__item {
+            font-size: 16px;
+        }
+
+        .receita__titulo {
+            font-size: 20px;
+            margin-left: 20px;
+        }
+
+        .responsavel,
+        .produtor,
+        .diagnostico,
+        .precaucoes {
+            padding: 8px;
+            margin: 16px 36px;
             border: 1px solid #808080;
             border-radius: 16px;
         }
-        .responsavel__campos {
-            display: flex;
+
+        .responsavel__titulo,
+        .produtor__titulo,
+        .diagnostico__titulo,
+        .precaucoes__titulo {
             margin: 8px 16px;
-            justify-content: space-between;
+            font-size: 16px;
         }
-        .responsavel__titulo {
+
+        .produtor__campos,
+        .diagnostico__campos {
             margin: 8px 16px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            gap: 8px;
+        }
+
+        .produtor__campos--secundario,
+        .responsavel__campos {
+            margin: 8px 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 8px;
+        }
+
+        .diagnostico__campos--secundario {
+            margin: 8px 16px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .diagnostico__campos--terciario {
+            margin: 24px 16px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        span {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .diagnostico__titulo--secundario {
+            margin-top: 8px;
+            font-size: 16px;
+            margin: 0 16px;
+            margin-bottom: 4px;
+        }
+
+        .diagnostico__item--subtitulo {
+            font-size: 15px;
+            margin: 0 16px;
+            margin-bottom: 8px;
+        }
+
+        .produtor__item,
+        .responsavel__item,
+        .diagnostico__item {
+            font-size: 14px;
+        }
+
+        .diagnostico__texto,
+        .precaucoes__texto {
+            font-size: 14px;
+            margin: 0px 16px;
+        }
+
+        .precaucoes__texto {
+            margin-bottom: 24px;
+        }
+
+        .d-none {
+            display: none;
+            visibility: hidden;
+        }
+
+        .confirmacao {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .confirmacao__fundo {
+            background-color: #fff;
+            width: 40%;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 24px;
+        }
+
+        .confirmacao__formulario {
+            margin-bottom: 46px;
+        }
+
+        .confirmacao__titulo {
+            margin-bottom: 46px;
         }
     </style>
 </head>
+
 <body>
     <header class="cabecalho">
         <h1 class="cabecalho__titulo">Confira a impressão:</h1>
     </header>
     <div class="container">
+        <section class="receita">
+            <div class="receita__espaco">
+                <h1 class="receita__titulo">RECEITA AGRONÔMICA</h1>
+                <div class="receita__campos">
+                    <p class="receita__item"><span class="span">ART/TRT:</span> BR20200200001</p>
+                    <p class="reeita__item"><span class="span">Receita nº:</span> BR202002RA000001</p>
+                </div>
+            </div>
+        </section>
         <section class="responsavel">
             <h3 class="responsavel__titulo">1. RESPONSÁVEL TÉCNICO</h3>
             <div class="responsavel__campos">
-                <p class="responsavel__item">Nome: {{ responsavel.nome }}</p>
-                <p class="responsavel__item">CNPJ: {{ responsavel.cnpj }}</p>
-                <p class="responsavel__item">Número de Registro: {{ responsavel.numero_registro }}</p>
+                <p class="responsavel__item"><span>Nome:</span> {{ responsavel.nome }}</p>
+                <p class="responsavel__item"><span>CNPJ:</span> {{ responsavel.cnpj }}</p>
+                <p class="responsavel__item"><span>Número de Registro:</span> {{ responsavel.numero_registro }}</p>
             </div>
         </section>
         <section class="produtor">
-            <h3 class="produtor__titulo">2. PRODUTO RURAL</h3>
-            <p class="produtor__item">Nome: {{ produtor.nome }}</p>
-            <p class="produtor__item">Descrição: {{ propriedade.descricao }}</p>
-            <p class="produtor__item">Propriedade: {{ produtor.propriedade }}</p>
-            <p class="produtor__item">CNPJ: {{ propriedade.cnpj }}</p>
-            <p class="produtor__item">Local de Aplicação: {{ propriedade.local }}</p>
-            <p class="produtor__item">Latitude: {{ propriedade.latitude }}</p>
-            <p class="produtor__item">Longitude: {{ propriedade.longitude }}</p>
+            <h3 class="produtor__titulo">2. PRODUTOR RURAL</h3>
+            <div class="produtor__campos">
+                <p class="produtor__item"><span>Nome:</span> {{ produtor.nome }}</p>
+                <p class="produtor__item"><span>Descrição:</span> {{ propriedade.descricao }}</p>
+                <p class="produtor__item"><span>Propriedade:</span> {{ produtor.propriedade }}</p>
+                <p class="produtor__item"><span>CNPJ:</span> {{ propriedade.cnpj }}</p>
+            </div>
+            <div class="produtor__campos--secundario">
+                <p class="produtor__item"><span>Local de Aplicação:</span> {{ propriedade.local }}</p>
+                <p class="produtor__item"><span>Latitude:</span> {{ propriedade.latitude }}</p>
+                <p class="produtor__item"><span>Longitude:</span> {{ propriedade.longitude }}</p>
+            </div>
         </section>
         <section class="diagnostico">
             <h3 class="diagnostico__titulo">3. DIAGNÓSTICO E RECOMENDAÇÕES TÉCNICAS</h3>
-            <p class="diagnostico__item">Cultura: {{ diagnostico.cultura }}</p>
-            <p class="diagnostico__item">Alvo: {{ diagnostico.alvo }}</p>
-            <p class="diagnostico__item">Produto Comercial: {{ diagnostico.produto_comercial }}</p>
-            <p class="diagnostico__item">Classe toxicológica: Categoria 4: Produto Pouco Tóxico</p>
-            <p class="diagnostico__item">Área a Tratar: {{ diagnostico.area_a_tratar }}</p>
-            <p class="diagnostico__item">Dosagem: 1 L/ha</p>
-            <p class="diagnostico__item">Quantidade a Adquirir: {{ diagnostico.quantidade_a_adquirir }}</p>
-            <p class="diagnostico__item">N° de Aplicações: {{ diagnostico.n_aplicacoes }}</p>
-            <p class="diagnostico__item">Volume da Calda: {{ diagnostico.volume_da_calda }}</p>
-            <p class="diagnostico__item">Intervalo de Segurança: {{ diagnostico.intervalo_de_seguranca }}</p>
-            <p class="diagnostico__item">Modalidade de Aplicação: {{ diagnostico.modalidade_aplicacao }}</p>
-            <p class="diagnostico__item">Equipamento de Aplicação: {{ diagnostico.equipamento_aplicacao }}</p>
-            <p class="diagnostico__item">Época de Aplicação: {{ diagnostico.epoca_aplicacao }}</p>
-            <h2 class="diagnostico__titulo--observacoes">OBSERVAÇÕES</h2> <br>
-            <p class="diagnostico__item--subtitulo">TERMO DE CONHECIMENTO DE RISCO E DE RESPONSABILIDADE</p> <br>
-            <p class="diagnostico__item">
-                O produtor acima idenficado está ciente que os produtos agrotóxicos hormonais, inclusive os produtos com ingrediente avo a base de ácido 2,4-diclorofenoxiacéco (2,4-D), em caso de deriva, causam grandes prejuízos para as culturas sensíveis. O produtor fica ciente que somente poderá aplicar os produtos agrotóxicos hormonais respeitando as seguintes condições meteorológicas:
-            </p> <br>
-            <p class="diagnostico__item">- Velocidade do Vento menor que 10 Km/h;</p>
-            <p class="diagnostico__item">- Umidade Relava do Ar superior a 55%;</p>
-            <p class="diagnostico__item">- Temperatura ambiente menor que 30ºC.</p>
-            <p class="diagnostico__item">No caso de recomendações específicas previstas na bula do produto, estas deverão ser obrigatoriamente seguidas. Em caso de omissão, deverão ser adotados os parâmetros gerais acima elencados. </p>
-            <p class="diagnostico__item">O produtor fica ciente de que o equipamento ulizado para aplicação de agrotóxicos hormonais deverá estar em condições técnicas adequadas, inclusive com bicos compaveis, conforme a recomendação do fabricante do produto agrotóxico. </p>
+            <div class="diagnostico__campos">
+                <p class="diagnostico__item"><span>Cultura:</span> {{ diagnostico.cultura }}</p>
+                <p class="diagnostico__item"><span>Alvo:</span> {{ diagnostico.alvo }}</p>
+                <p class="diagnostico__item"><span>Produto Comercial:</span> {{ diagnostico.produto_comercial }}</p>
+                <p class="diagnostico__item"><span>Classe toxicológica:</span> Categoria 4: Produto Pouco Tóxico</p>
+            </div>
+            <div class="diagnostico__campos--secundario">
+                <p class="diagnostico__item"><span>Área a Tratar:</span> {{ diagnostico.area_a_tratar }}</p>
+                <p class="diagnostico__item"><span>Dosagem:</span> 1 L/ha</p>
+                <p class="diagnostico__item"><span>Quantidade a Adquirir:</span> {{ diagnostico.quantidade_a_adquirir }}
+                </p>
+                <p class="diagnostico__item"><span>N° de Aplicações:</span> {{ diagnostico.n_aplicacoes }}</p>
+            </div>
+            <div class="diagnostico__campos">
+                <p class="diagnostico__item"><span>Volume da Calda:</span> {{ diagnostico.volume_da_calda }}</p>
+                <p class="diagnostico__item"><span>Intervalo de Segurança:</span> {{ diagnostico.intervalo_de_seguranca
+                    }}</p>
+                <p class="diagnostico__item"><span>Modalidade de Aplicação:</span> {{ diagnostico.modalidade_aplicacao
+                    }}</p>
+                <p class="diagnostico__item"><span>Equipamento de Aplicação:</span> {{ diagnostico.equipamento_aplicacao
+                    }}</p>
+            </div>
+            <div class="diagnostico__campos--terciario">
+                <p class="diagnostico__item"><span>Época de Aplicação:</span> {{ diagnostico.epoca_aplicacao }}</p>
+            </div>
+            <h2 class="diagnostico__titulo--secundario">OBSERVAÇÕES</h2>
+            <p class="diagnostico__item--subtitulo">TERMO DE CONHECIMENTO DE RISCO E DE RESPONSABILIDADE</p>
+            <p class="diagnostico__texto">
+                O produtor acima idenficado está ciente que os produtos agrotóxicos hormonais, inclusive os produtos com
+                ingrediente avo a base de ácido 2,4-diclorofenoxiacéco (2,4-D), em caso de deriva, causam grandes
+                prejuízos para as culturas sensíveis. O produtor fica ciente que somente poderá aplicar os produtos
+                agrotóxicos hormonais respeitando as seguintes condições meteorológicas:
+            </p>
+            <p class="diagnostico__texto">- Velocidade do Vento menor que 10 Km/h;</p>
+            <p class="diagnostico__texto">- Umidade Relava do Ar superior a 55%;</p>
+            <p class="diagnostico__texto">- Temperatura ambiente menor que 30ºC.</p>
+            <p class="diagnostico__texto">No caso de recomendações específicas previstas na bula do produto, estas
+                deverão ser obrigatoriamente seguidas. Em caso de omissão, deverão ser adotados os parâmetros gerais
+                acima elencados. </p>
+            <p class="diagnostico__texto">O produtor fica ciente de que o equipamento ulizado para aplicação de
+                agrotóxicos hormonais deverá estar em condições técnicas adequadas, inclusive com bicos compaveis,
+                conforme a recomendação do fabricante do produto agrotóxico. </p>
+        </section>
+        <section class="precaucoes">
+            <h3 class="precaucoes__titulo">4. PRECAUÇÕES DE USO</h3>
+            <p class="precaucoes__texto">
+                Os tratamentos fitossanitários deverão ser feitos com rigorosa observância dos cuidados e das
+                recomendações técnicas, no sentido de garantir a eficiência do tratamento, e não ocasionar danos à saúde
+                pública, ao meio ambiente e às explorações agropecuárias circunvizinhas, bem como, à qualidade dos
+                produtos obtidos. Não é permitida a aplicação aérea de agrotóxicos e outros biocidas em áreas situadas a
+                uma distância mínima de 500 metros adjacentes a mananciais de captação de água para abastecimento de
+                populações, núcleos populacionais, escolas, habitações e locais de recreação, e, de 250 metros
+                adjacentes a mananciais de água, moradias isoladas e agrupamento de animais e culturas suscetíveis a
+                danos. Será permitida, porém, a aplicação de agrotóxicos e biocidas nas lavouras, se efetuada por
+                atomizadores ou canhões, numa distância mínima de 250 metros e, por aparelhos costais ou tratorizados de
+                barra, numa distância mínima de 50 metros dos locais acima mencionados.
+            </p>
+            <p class="precaucoes__texto">
+                Em todos os casos as aplicações somente poderão ser feitas quando a direção do vento for tal que não
+                leve resíduos de agrotóxicos e biocidas para estes locais. É obrigatório o uso de equipamentos de
+                aplicação que utilizem tecnologia de redução de deriva de pelo menos 50% para aplicação tratorizada nas
+                culturas de café e cana-de-açúcar. Não utilizar pulverizadores costais (manuais, pressurizados ou
+                motorizados). Implementar bordadura de no mínimo, 10 metros livres de aplicação tratorizada de 2,4-D,
+                com início no limite externo da plantação em direção ao seu interior sempre que houver povoações,
+                cidades, vilas, bairros, bem como moradias ou escolas isoladas, a menos de 500 metros do limite externo
+                da plantação. Evitar aplicações em proximidade de culturas sensíveis. São sensíveis ao produto todas as
+                culturas dicotiledôneas, hortaliças, bananeiras, quando a pulverização atinge diretamente a folhagem. A
+                utilização fora das especificações pode causar sérios danos em culturas sensíveis. Dessa forma, não
+                aplique quando houver possibilidade de atingir essas culturas. Não aplique o produto na presença de
+                ventos fortes e nas horas mais quentes do dia. Quando o herbicida é usado na pós-emergência das culturas
+                indicadas, não deve ser adicionado adjuvante na calda. Aplique somente as doses recomendadas e observe o
+                intervalo de segurança (intervalo de tempo entre a última aplicação e a colheita). Para aplicação
+                tratorizada, o mesmo indivíduo não pode realizar as atividades de mistura, abastecimento e aplicação.
+            </p>
         </section>
     </div>
+    <footer class="rodape">
+        <button id="iniciar" class="rodape__botao" type="button">Imprimir</button>
+    </footer>
+
+    <div class="confirmacao d-none">
+        <div class="confirmacao__fundo">
+            <h3 class="confirmacao__titulo">Impressão do Documento</h3>
+            <form class="confirmacao__formulario">
+                <input class="confirmacao__caixa" id="arquivo" name="arquivo" type="checkbox">
+                <label class="confirmacao__titulo" for="arquivo"> Deseja adicionar as precauções de uso?</label>
+            </form>
+            <button id="imprimir" class="rodape__botao" type="submit">Imprimir</button>
+        </div>
+    </div>
+    <script>
+        function mostrarConfirmacao() {
+            var divConfirmacao = document.querySelector('.confirmacao');
+            divConfirmacao.classList.remove('d-none');
+        }
+
+        function ocultarConfirmacao(event) {
+            event.preventDefault();
+            var divConfirmacao = document.querySelector('.confirmacao');
+            divConfirmacao.classList.add('d-none');
+        }
+
+        var botaoIniciar = document.getElementById('iniciar');
+        botaoIniciar.addEventListener('click', mostrarConfirmacao);
+
+        var botaoImprimir = document.getElementById('imprimir');
+        botaoImprimir.addEventListener('click', ocultarConfirmacao);
+
+        var checkboxPrecaucoes = document.getElementById('arquivo');
+        var secaoPrecaucoes = document.querySelector('.precaucoes');
+
+        checkboxPrecaucoes.addEventListener('change', function () {
+            if (checkboxPrecaucoes.checked) {
+                secaoPrecaucoes.classList.remove('d-none');
+            } else {
+                secaoPrecaucoes.classList.add('d-none');
+            }
+        });
+    </script>
 </body>
+
 </html>
