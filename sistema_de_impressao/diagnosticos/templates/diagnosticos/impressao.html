@@ -338,33 +338,25 @@
             <button id="imprimir" class="rodape__botao" type="submit">Imprimir</button>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function mostrarConfirmacao() {
-            var divConfirmacao = document.querySelector('.confirmacao');
-            divConfirmacao.classList.remove('d-none');
-        }
+        $(document).ready(function () {
+            $('#iniciar').click(function () {
+                $('.confirmacao').removeClass('d-none');
+            });
 
-        function ocultarConfirmacao(event) {
-            event.preventDefault();
-            var divConfirmacao = document.querySelector('.confirmacao');
-            divConfirmacao.classList.add('d-none');
-        }
+            $('#imprimir').click(function (event) {
+                event.preventDefault();
+                $('.confirmacao').addClass('d-none');
+            });
 
-        var botaoIniciar = document.getElementById('iniciar');
-        botaoIniciar.addEventListener('click', mostrarConfirmacao);
-
-        var botaoImprimir = document.getElementById('imprimir');
-        botaoImprimir.addEventListener('click', ocultarConfirmacao);
-
-        var checkboxPrecaucoes = document.getElementById('arquivo');
-        var secaoPrecaucoes = document.querySelector('.precaucoes');
-
-        checkboxPrecaucoes.addEventListener('change', function () {
-            if (checkboxPrecaucoes.checked) {
-                secaoPrecaucoes.classList.remove('d-none');
-            } else {
-                secaoPrecaucoes.classList.add('d-none');
-            }
+            $('#arquivo').change(function () {
+                if ($(this).is(':checked')) {
+                    $('.precaucoes').removeClass('d-none');
+                } else {
+                    $('.precaucoes').addClass('d-none');
+                }
+            });
         });
     </script>
 </body>
