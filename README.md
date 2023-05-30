@@ -10,7 +10,7 @@ Como instalar:<br><br>
     from diagnosticos.models import ResponsavelTecnico, ProdutorRural, Propriedade, Diagnostico (Para importar as classes)<br><br>
     **Adicione como nos exemplos abaixo:**<br>
     responsavel = ResponsavelTecnico.objects.create(nome='Nome do Responsável', cnpj='12345678901234', numero_registro='123456')<br><br>
-    minha_propriedade = Propriedade.objects.create(descricao="Descrição da Propriedade", cnpj="12345678901234", local="Local da Propriedade", latitude=12.345678, longitude=98.765432)<br><br>
+    minha_propriedade = Propriedade.objects.create(nome="Nome da propriedade", descricao="Descrição da Propriedade", cnpj="12345678901234", local="Local da Propriedade", latitude=12.345678, longitude=98.765432)<br><br>
     
 produtor = ProdutorRural.objects.create(nome="Nome do Produtor", propriedade=minha_propriedade)<br><br>
  
