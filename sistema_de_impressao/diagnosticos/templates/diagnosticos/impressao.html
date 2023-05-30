@@ -263,12 +263,9 @@
             </div>
             <div class="diagnostico__campos">
                 <p class="diagnostico__item"><span>Volume da Calda:</span> {{ diagnostico.volume_da_calda }}</p>
-                <p class="diagnostico__item"><span>Intervalo de Segurança:</span> {{ diagnostico.intervalo_de_seguranca
-                    }}</p>
-                <p class="diagnostico__item"><span>Modalidade de Aplicação:</span> {{ diagnostico.modalidade_aplicacao
-                    }}</p>
-                <p class="diagnostico__item"><span>Equipamento de Aplicação:</span> {{ diagnostico.equipamento_aplicacao
-                    }}</p>
+                <p class="diagnostico__item"><span>Intervalo de Segurança:</span> {{ diagnostico.intervalo_de_seguranca }}</p>
+                <p class="diagnostico__item"><span>Modalidade de Aplicação:</span> {{ diagnostico.modalidade_aplicacao }}</p>
+                <p class="diagnostico__item"><span>Equipamento de Aplicação:</span> {{ diagnostico.equipamento_aplicacao }}</p>
             </div>
             <div class="diagnostico__campos--terciario">
                 <p class="diagnostico__item"><span>Época de Aplicação:</span> {{ diagnostico.epoca_aplicacao }}</p>
@@ -341,6 +338,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            var checkbox = $(".confirmacao__caixa");
+            checkbox.prop("checked", true);
+        });
+        $(document).ready(function () {
             $('#iniciar').click(function () {
                 $('.confirmacao').removeClass('d-none');
             });
@@ -356,6 +357,189 @@
                 } else {
                     $('.precaucoes').addClass('d-none');
                 }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#imprimir").click(function () {
+                var conteudo = $(".container").html();
+
+                var janela = window.open('', '', 'width=800,height=600');
+                janela.document.write('<html><head><title>Imprimir</title>');
+                janela.document.write('<style>');
+                janela.document.write(`
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: Roboto, 'sans-serif';
+                }
+
+                .container {
+                    max-width: 960px;
+                    width: 100%;
+                    margin: 0 auto;
+                    border: 1px solid #808080;
+                    padding-top: 24px;
+                }
+
+                .cabecalho,
+                .rodape {
+                    padding: 24px;
+                }
+
+                .cabecalho__titulo {
+                    font-size: 24px;
+                    text-align: center;
+                }
+
+                .rodape {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .rodape__botao {
+                    padding: 16px 36px;
+                    background-color: #228B22;
+                    color: #fff;
+                    border: 1px solid #228B22;
+                    border-radius: 16px;
+                    font-size: 18px;
+                }
+
+                .rodape__botao:hover {
+                    padding: 16px 36px;
+                    background-color: #005700;
+                    color: #fff;
+                    border: 1px solid #005700;
+                    border-radius: 16px;
+                    font-size: 18px;
+                    cursor: pointer;
+                }
+
+                .receita {
+                    padding: 8px;
+                    margin: 16px 36px;
+                    border: 1px solid #D5E6DC;
+                    background-color: #D5E6DC;
+                    border-radius: 16px;
+                }
+
+                .receita__espaco {
+                    display: flex;
+                    padding: 8px 16px;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .span {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+
+                .receita__item {
+                    font-size: 16px;
+                }
+
+                .receita__titulo {
+                    font-size: 20px;
+                    margin-left: 20px;
+                }
+
+                .responsavel,
+                .produtor,
+                .diagnostico,
+                .precaucoes {
+                    padding: 8px;
+                    margin: 16px 36px;
+                    border: 1px solid #808080;
+                    border-radius: 16px;
+                }
+
+                .responsavel__titulo,
+                .produtor__titulo,
+                .diagnostico__titulo,
+                .precaucoes__titulo {
+                    margin: 8px 16px;
+                    font-size: 16px;
+                }
+
+                .produtor__campos,
+                .diagnostico__campos {
+                    margin: 8px 16px;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: auto;
+                    gap: 8px;
+                }
+
+                .produtor__campos--secundario,
+                .responsavel__campos {
+                    margin: 8px 16px;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-rows: auto;
+                    gap: 8px;
+                }
+
+                .diagnostico__campos--secundario {
+                    margin: 8px 16px;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 8px;
+                }
+
+                .diagnostico__campos--terciario {
+                    margin: 24px 16px;
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr);
+                }
+
+                span {
+                    font-weight: 700;
+                    font-size: 14px;
+                }
+
+                .diagnostico__titulo--secundario {
+                    margin-top: 8px;
+                    font-size: 16px;
+                    margin: 0 16px;
+                    margin-bottom: 4px;
+                }
+
+                .diagnostico__item--subtitulo {
+                    font-size: 15px;
+                    margin: 0 16px;
+                    margin-bottom: 8px;
+                }
+
+                .produtor__item,
+                .responsavel__item,
+                .diagnostico__item {
+                    font-size: 14px;
+                }
+
+                .diagnostico__texto,
+                .precaucoes__texto {
+                    font-size: 14px;
+                    margin: 0px 16px;
+                }
+
+                .precaucoes__texto {
+                    margin-bottom: 24px;
+                }
+
+                .d-none {
+                    display: none;
+                    visibility: hidden;
+                }
+        `);
+                janela.document.write('</style>');
+                janela.document.write('</head><body>');
+                janela.document.write(conteudo);
+                janela.document.write('</body></html>');
+                janela.document.close();
+                janela.print();
             });
         });
     </script>
