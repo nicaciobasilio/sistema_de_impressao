@@ -5,7 +5,9 @@ Como instalar:<br><br>
     python3 -m venv env (Para criar ambiente virtual)<br>
     python3 manage.py createsuperuser (Para criar um superusuário)<br>
     source env/bin/activate (Para ativar ambiente)<br>
-    pip install Django (Para baixar pacote)<br><br>
+    pip install Django (Para baixar pacote)<br>
+    cd sistema_de_impressao/ (Entre na pasta do arquivo) <br>
+    pip install django-jazzmin (Instale o tema jazzmin)<br><br>
 **Em seguida:**<br>
     python manage.py shell (Para iniciar o shell) <br>
     from diagnosticos.models import ResponsavelTecnico, ProdutorRural, Propriedade, Diagnostico (Para importar as classes)<br><br>
