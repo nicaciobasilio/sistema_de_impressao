@@ -8,28 +8,30 @@ class ResponsavelTecnico(models.Model):
     class Meta: 
         verbose_name="Responsável técnico"
         verbose_name_plural="Responsáveis técnicos"
-        db_table = "responsavel_tecnico"
-
-class ProdutorRural(models.Model):
-    nome = models.CharField(max_length=50)
-    propriedade = models.CharField(max_length=100)
-
-    class Meta: 
-        verbose_name="Produtor rural"
-        verbose_name_plural="Produtores rurais"
-        db_table = "produtor_rural"
 
 class Propriedade(models.Model):
+    nome = models.CharField(max_length=30)
     descricao = models.CharField(max_length=200)
     cnpj = models.CharField(max_length=14)
     local = models.CharField(max_length=100)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
 
+    def __str__(self):
+        return f"{self.nome}"
+
     class Meta: 
         verbose_name="Propriedade"
         verbose_name_plural="Propriedades"
-        db_table = "propriedade"
+
+class ProdutorRural(models.Model):
+    nome = models.CharField(max_length=50)
+    propriedade = models.ForeignKey("diagnosticos.Propriedade", on_delete=models.CASCADE)
+
+    class Meta: 
+        verbose_name="Produtor rural"
+        verbose_name_plural="Produtores rurais"
+
 
 class Diagnostico(models.Model):
     cultura = models.CharField(max_length=100)
@@ -47,4 +49,5 @@ class Diagnostico(models.Model):
     class Meta: 
         verbose_name="Diagnóstico"
         verbose_name_plural="Diagnostícos"
+
 
