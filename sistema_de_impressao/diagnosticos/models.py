@@ -47,5 +47,4 @@ class Diagnostico(models.Model):
     class Meta: 
         verbose_name="Diagnóstico"
         verbose_name_plural="Diagnostícos"
-        db_table = "diagnostico"
 
