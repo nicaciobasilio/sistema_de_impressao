@@ -7,7 +7,7 @@ Como instalar:
     source env/bin/activate (Para ativar ambiente)
 **Em seguida:**
     python manage.py shell (Para iniciar o shell)
-    from nome_do_app.models import ResponsavelTecnico, ProdutorRural, Propriedade, Diagnostico (Para importar as classes)
+    from diagnosticos.models import ResponsavelTecnico, ProdutorRural, Propriedade, Diagnostico (Para importar as classes)
     **Adicione como nos exemplos abaixo:**
     responsavel = ResponsavelTecnico.objects.create(nome='Nome do Responsável', cnpj='12345678901234', numero_registro='123456')
     produtor = ProdutorRural.objects.create(nome='Nome do Produtor', propriedade='Nome da Propriedade')
