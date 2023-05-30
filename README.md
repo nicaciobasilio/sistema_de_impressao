@@ -6,7 +6,7 @@ Como instalar:
     python3 manage.py createsuperuser (Para criar um superusuário)
     source env/bin/activate (Para ativar ambiente)
 **Em seguida:**
-    python manage.py shell (Para iniciar o shell)
+    python manage.py shell (Para iniciar o shell) <br>
     from diagnosticos.models import ResponsavelTecnico, ProdutorRural, Propriedade, Diagnostico (Para importar as classes)
     **Adicione como nos exemplos abaixo:**
     responsavel = ResponsavelTecnico.objects.create(nome='Nome do Responsável', cnpj='12345678901234', numero_registro='123456')
