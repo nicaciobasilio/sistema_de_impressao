@@ -19,6 +19,8 @@ Como instalar:<br><br>
 produtor = ProdutorRural.objects.create(nome="Nome do Produtor", propriedade=minha_propriedade)<br><br>
  
 diagnostico = Diagnostico.objects.create(cultura='Nome da Cultura', produto_comercial='Nome do Produto', alvo='Nome do Alvo', area_a_tratar=100.00, volume_da_calda=10.00, intervalo_de_seguranca=7, modalidade_aplicacao='Nome da Modalidade', equipamento_aplicacao='Nome do Equipamento', quantidade_a_adquirir=5, n_aplicacoes=3, epoca_aplicacao='Época de Aplicação')<br><br>
+**Prosseguindo:**<br>
+exit() (Para sair do shell)<br><br>
 **Para finalizar:**<br>
     python manage.py runserver (Para iniciar o server)<br>
     http://127.0.0.1:8000/exibir-diagnostico/ (Acesse para ver os dados inseridos no arquivo e imprima)<br>
